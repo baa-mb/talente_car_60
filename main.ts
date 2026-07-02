@@ -36,6 +36,9 @@ radio.onReceivedValue(function (info, wert) {
         ))
     }
 })
+radio.setGroup(99)
+let rad_links_korrektur = 0
+feinheit = 0.5
 let kurve_get = 0
 let gerade_get = 0
 let grenze = 0
@@ -50,8 +53,8 @@ let kurve_rad = 0
 let kurve_links = 0
 let gang = 0
 let feinheit = 0
-let rad_links_korrektur = 0
-radio.setGroup(99)
+
+
 rad_links_korrektur = 1
 feinheit = 0.4
 let rad_links = 0
@@ -60,7 +63,7 @@ let motor_links = 0
 let motor_rechts = 0
 let links_ist = 0
 let rechts_ist = 0
-feinheit = 0.5
+
 init()
 basic.forever(function () {
     berechne_rad_werte()
