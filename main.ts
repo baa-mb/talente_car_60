@@ -15,6 +15,7 @@ function berechne_rad_werte () {
 function init () {
     basic.showIcon(IconNames.Diamond)
     hebe_winkel = 70
+    
     motor_rechts = robotbit.Motors.M1A
     motor_links = robotbit.Motors.M2B
     robotbit.MotorStopAll()
@@ -37,8 +38,8 @@ radio.onReceivedValue(function (info, wert) {
     }
 })
 radio.setGroup(99)
-let rad_links_korrektur = 0
-feinheit = 0.5
+let rad_links_korrektur = 1
+let feinheit = 0.5
 let kurve_get = 0
 let gerade_get = 0
 let grenze = 0
@@ -52,10 +53,8 @@ let kurve_rechts = 0
 let kurve_rad = 0
 let kurve_links = 0
 let gang = 0
-let feinheit = 0
 
 
-rad_links_korrektur = 1
 feinheit = 0.4
 let rad_links = 0
 let rad_rechts = 0
