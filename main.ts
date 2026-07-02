@@ -17,7 +17,6 @@ function init () {
     hebe_winkel = 70
     motor_rechts = robotbit.Motors.M1A
     motor_links = robotbit.Motors.M2B
-    feinheit = 0.4
     robotbit.MotorStopAll()
 }
 radio.onReceivedValue(function (info, wert) {
@@ -54,6 +53,7 @@ let feinheit = 0
 let rad_links_korrektur = 0
 radio.setGroup(99)
 rad_links_korrektur = 1
+feinheit = 0.4
 let rad_links = 0
 let rad_rechts = 0
 let motor_links = 0
