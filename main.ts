@@ -56,12 +56,12 @@ let motor_links = 0
 let motor_rechts = 0
 let links_ist = 0
 let rechts_ist = 0
-rad_links_korrektur = 1.1
+rad_links_korrektur = 1
 grenze = 255
 radio.setGroup(99)
 rad_links_korrektur = 1
 let feinheit = 0.5
-let schritte=12
+let schritte=6
 init()
 basic.forever(function () {
     berechne_rad_werte()
@@ -71,7 +71,7 @@ basic.forever(function () {
         links_ist = Math.max(links_ist - schritte, links_soll)
     }
     if (rechts_ist < rechts_soll) {
-        rechts_ist = Math.min(rechts_ist + 12, rechts_soll)
+        rechts_ist = Math.min(rechts_ist + schritte, rechts_soll)
     } else if (rechts_ist > rechts_soll) {
         rechts_ist = Math.max(rechts_ist - schritte, rechts_soll)
     }
