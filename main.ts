@@ -54,7 +54,6 @@ let kurve_rad = 0
 let kurve_links = 0
 let gang = 0
 
-
 feinheit = 0.4
 let rad_links = 0
 let rad_rechts = 0
