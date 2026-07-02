@@ -8,20 +8,19 @@ function berechne_rad_werte () {
     kurve_rechts = kurve_rad
     gerade_links = gerade_rad * rad_links_korrektur
     gerade_rechts = gerade_rad
-    links_soll = Math.round((gerade_links + kurve_links * feinheit) / 2)
-    rechts_soll = Math.round((gerade_rechts + kurve_rechts * feinheit) / 2)
+    links_soll = Math.round(gerade_links - kurve_rechts)
+    rechts_soll = Math.round(gerade_rechts - kurve_links)
 }
 // robotbit.Servo(robotbit.Servos.S1, 0)
 function init () {
     basic.showIcon(IconNames.Diamond)
     hebe_winkel = 70
-    
     motor_rechts = robotbit.Motors.M1A
-    motor_links = robotbit.Motors.M2B
-    robotbit.MotorStopAll()
+motor_links = robotbit.Motors.M2B
+robotbit.MotorStopAll()
 }
 radio.onReceivedValue(function (info, wert) {
-    grenze = 205 + gang * 10
+    // grenze = 205 + gang * 10
     // serial.writeValue("kurve_rad", kurve_rad)
     if (info == "gerade") {
         gerade_get = wert
@@ -37,12 +36,8 @@ radio.onReceivedValue(function (info, wert) {
         ))
     }
 })
-radio.setGroup(99)
-let rad_links_korrektur = 1
-let feinheit = 0.5
 let kurve_get = 0
 let gerade_get = 0
-let grenze = 0
 let hebe_winkel = 0
 let rechts_soll = 0
 let links_soll = 0
@@ -53,15 +48,19 @@ let kurve_rechts = 0
 let kurve_rad = 0
 let kurve_links = 0
 let gang = 0
-
-feinheit = 0.4
+let grenze = 0
+let rad_links_korrektur = 0
 let rad_links = 0
 let rad_rechts = 0
 let motor_links = 0
 let motor_rechts = 0
 let links_ist = 0
 let rechts_ist = 0
-
+rad_links_korrektur = 1.1
+grenze = 255
+radio.setGroup(99)
+rad_links_korrektur = 1
+let feinheit = 0.5
 init()
 basic.forever(function () {
     berechne_rad_werte()
@@ -80,6 +79,7 @@ basic.forever(function () {
     } else {
         robotbit.MotorRun(motor_links, links_ist)
 robotbit.MotorRun(motor_rechts, rechts_ist)
+serial.writeValue("x", rechts_ist)
     }
-    basic.pause(10)
+    basic.pause(5)
 })
