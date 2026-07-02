@@ -16,7 +16,7 @@ function init () {
     basic.showIcon(IconNames.Diamond)
     hebe_winkel = 70
     motor_rechts = robotbit.Motors.M1A
-    motor_links = robotbit.Motors.M2A
+    motor_links = robotbit.Motors.M2B
     robotbit.MotorStopAll()
 }
 radio.onReceivedValue(function (info, wert) {
